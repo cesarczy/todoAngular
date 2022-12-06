@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+  <span class="titulonav">To Do List - By César Siqueira</span>
+  <button mat-raised-button color="warn" (click)="openDialog()">Add Task</button>
+</mat-toolbar>
+
+<div class="container">
+  <div style="margin-top: 10px;">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. study for test" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Tasks Column -->
+        <ng-container matColumnDef="task">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Task Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.task}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+        </ng-container>
+
+        <!-- Comment Column -->
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+          <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="editTask(row)" color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteTask(row.id)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>
+</div>

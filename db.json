@@ -1,0 +1,32 @@
+{
+  "todoList": [
+    {
+      "task": "Tarefa 1",
+      "status": "To Do",
+      "comment": "fazer",
+      "id": 1
+    },
+    {
+      "task": "Tarefa 2",
+      "status": "In Progress",
+      "comment": "progresso",
+      "id": 2
+    },
+    {
+      "task": "Tarefa 3",
+      "status": "Done",
+      "comment": "Feito",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
